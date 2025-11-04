@@ -1,0 +1,10 @@
+<h1>Alimentazione</h1>
+<label><input type="checkbox" [(ngModel)]="onlyGF"> Solo grain-free</label>
+<table role="table" aria-label="Porzioni consigliate">
+  <thead><tr><th>Peso (kg)</th><th>Cucciolo</th><th>Adulto</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr *ngFor="let r of filtered">
+      <td>{{r.rangeKg}}</td><td>{{r.puppy}}</td><td>{{r.adult}}</td><td>{{r.notes || '—'}}</td>
+    </tr>
+  </tbody>
+</table>

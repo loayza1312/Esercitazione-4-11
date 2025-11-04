@@ -1,0 +1,14 @@
+<a routerLink="/razze" class="back">← Torna all’elenco</a>
+<section *ngIf="breed; else notFound">
+  <h1>{{breed.name}}</h1>
+  <img [src]="breed.image" [alt]="breed.name" class="hero">
+  <ul class="meta">
+    <li>Taglia: {{breed.size}}</li>
+    <li>Energia: {{breed.energy}}/5</li>
+    <li *ngIf="breed.hypoallergenic">Ipoallergenico</li>
+  </ul>
+  <p>{{breed.shortDesc}}</p>
+  <h2>Cura e consigli</h2>
+  <ul><li *ngFor="let c of breed.care">{{c}}</li></ul>
+</section>
+<ng-template #notFound><p>Razza non trovata.</p></ng-template>

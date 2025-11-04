@@ -1,0 +1,16 @@
+<header class="hdr">
+  <a routerLink="/" class="logo" aria-label="PetCare Home">🐾 PetCare</a>
+  <nav aria-label="Principale">
+    <a routerLink="/razze" routerLinkActive="active">Razze</a>
+    <a routerLink="/allenamento" routerLinkActive="active">Allenamento</a>
+    <a routerLink="/alimentazione" routerLinkActive="active">Alimentazione</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
+  </nav>
+</header>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="ftr">© {{ year }} – Solo client-side</footer>
+

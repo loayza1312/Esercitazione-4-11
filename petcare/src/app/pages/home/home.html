@@ -1,0 +1,13 @@
+<section class="hero">
+  <h1>Benvenuto su PetCare</h1>
+  <p>Guide rapide su razze, allenamento e alimentazione.</p>
+  <div class="cta">
+    <a routerLink="/razze" class="btn">Scopri le Razze</a>
+    <a routerLink="/allenamento" class="btn btn-sec">Crea Piano</a>
+  </div>
+</section>
+<section aria-labelledby="tip">
+  <h2 id="tip">Consiglio del giorno</h2>
+  <blockquote>{{ tip }}</blockquote>
+  <button class="btn" (click)="refresh()">Nuovo consiglio</button>
+</section>

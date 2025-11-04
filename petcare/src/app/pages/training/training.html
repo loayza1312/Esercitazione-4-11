@@ -1,0 +1,34 @@
+<h1>Allenamento</h1>
+<form class="panel" (submit)="$event.preventDefault()">
+  <fieldset>
+    <legend>Livello</legend>
+    <label><input type="radio" name="lvl" [(ngModel)]="level" value="principiante"> Principiante</label>
+    <label><input type="radio" name="lvl" [(ngModel)]="level" value="intermedio"> Intermedio</label>
+    <label><input type="radio" name="lvl" [(ngModel)]="level" value="avanzato"> Avanzato</label>
+  </fieldset>
+
+  <label for="intensity">Intensità: {{intensity}}</label>
+  <input id="intensity" type="range" min="1" max="10" [(ngModel)]="intensity" name="intensity">
+
+  <div class="actions">
+    <button class="btn" (click)="generate()">Genera Piano</button>
+    <button class="btn" (click)="save()" [disabled]="!current">Salva</button>
+  </div>
+</form>
+
+<!-- ✅ Proteggi l'accesso con *ngIf="current as plan" -->
+<section *ngIf="current as plan">
+  <h2>Piano generato</h2>
+  <ul>
+    <li *ngFor="let it of plan.items">{{ it }}</li>
+  </ul>
+</section>
+
+<section aria-labelledby="history">
+  <h2 id="history">Piani salvati</h2>
+  <ul class="saved">
+    <li *ngFor="let p of saved">
+      [{{p.level}} | {{p.intensity}}] {{p.items.length}} attività · {{ p.createdAt | date:'short' }}
+    </li>
+  </ul>
+</section>

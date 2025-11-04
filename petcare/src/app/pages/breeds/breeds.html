@@ -1,0 +1,79 @@
+<h1>Razze</h1>
+<p class="hint">Suggerimento: premi “/” per cercare</p>
+
+<form class="filters" (submit)="$event.preventDefault()">
+  <!-- query -->
+  <input
+    id="searchBox"
+    type="search"
+    placeholder="Cerca razza…"
+    [ngModel]="svc.query()"
+    (ngModelChange)="svc.query.set($event)"
+    name="q"
+    aria-label="Cerca">
+
+  <!-- size -->
+  <select
+    [ngModel]="svc.size()"
+    (ngModelChange)="svc.size.set($event)"
+    name="size"
+    aria-label="Taglia">
+    <option [ngValue]="'tutte'">Tutte</option>
+    <option [ngValue]="'piccola'">Piccola</option>
+    <option [ngValue]="'media'">Media</option>
+    <option [ngValue]="'grande'">Grande</option>
+  </select>
+
+  <!-- energy -->
+  <select
+    [ngModel]="svc.energy()"
+    (ngModelChange)="svc.energy.set($event)"
+    name="energy"
+    aria-label="Energia">
+    <option [ngValue]="0">Qualsiasi</option>
+    <option *ngFor="let e of [1,2,3,4,5]" [ngValue]="e">Energia {{e}}</option>
+  </select>
+
+  <!-- hypo -->
+  <select
+    [ngModel]="svc.hypo()"
+    (ngModelChange)="svc.hypo.set($event)"
+    name="hypo"
+    aria-label="Ipoallergenico">
+    <option [ngValue]="'any'">Tutte</option>
+    <option [ngValue]="true">Solo ipoallergeniche</option>
+    <option [ngValue]="false">Non ipoallergeniche</option>
+  </select>
+
+  <button type="button" (click)="reset()">Reset</button>
+</form>
+
+<!-- caricamento con skeleton -->
+<section class="grid" *ngIf="svc.loading(); else content" aria-busy="true">
+  <div class="skeleton" *ngFor="let i of [0,1,2,3,4,5]"></div>
+</section>
+
+<!-- contenuto reale -->
+<ng-template #content>
+  <p *ngIf="svc.filtered().length === 0" role="status">
+    Nessun risultato coi filtri correnti.
+  </p>
+
+  <section class="grid">
+    <article class="card" *ngFor="let b of svc.filtered()">
+      <img [src]="b.image" [alt]="b.name" loading="lazy">
+      <div>
+        <h3>{{ b.name }}</h3>
+        <p>{{ b.shortDesc }}</p>
+        <ul class="meta">
+          <li>Taglia: {{ b.size }}</li>
+          <li>Energia: {{ b.energy }}/5</li>
+          <li *ngIf="b.hypoallergenic">Ipoallergenico</li>
+        </ul>
+        <a [routerLink]="['/razze', b.id]" class="btn" aria-label="Dettagli {{ b.name }}">
+          Dettagli
+        </a>
+      </div>
+    </article>
+  </section>
+</ng-template>
