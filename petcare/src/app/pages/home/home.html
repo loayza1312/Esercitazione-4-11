@@ -1,13 +1,22 @@
 <section class="hero">
-  <h1>Benvenuto su PetCare</h1>
-  <p>Guide rapide su razze, allenamento e alimentazione.</p>
-  <div class="cta">
-    <a routerLink="/razze" class="btn">Scopri le Razze</a>
-    <a routerLink="/allenamento" class="btn btn-sec">Crea Piano</a>
+  <div class="hero-content">
+    <h1>🐾 Benvenuto su <span>PetCare</span></h1>
+    <p>Scopri come prenderti cura del tuo amico a quattro zampe.<br>
+      Guide rapide su razze, allenamento e alimentazione.</p>
+
+    <div class="cta">
+      <a routerLink="/razze" class="btn">🐶 Scopri le Razze</a>
+      <a routerLink="/allenamento" class="btn btn-sec">💪 Crea Piano di Allenamento</a>
+    </div>
   </div>
+
+  <!-- immagine hero -->
+  <img src="assest/cane.jpg" alt="Cane felice" class="hero-img">
+
 </section>
-<section aria-labelledby="tip">
-  <h2 id="tip">Consiglio del giorno</h2>
+
+<section class="tip-section" aria-labelledby="tip">
+  <h2 id="tip">💡 Consiglio del giorno</h2>
   <blockquote>{{ tip }}</blockquote>
-  <button class="btn" (click)="refresh()">Nuovo consiglio</button>
+  <button class="btn" (click)="refresh()">🔁 Nuovo consiglio</button>
 </section>

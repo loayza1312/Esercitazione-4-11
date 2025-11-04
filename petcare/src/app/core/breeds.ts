@@ -10,7 +10,7 @@ export class BreedsService {
       size: 'media',
       energy: 4,
       hypoallergenic: false,
-      image: 'assets/breeds/amstaff.jpg',
+      image: 'assest/amstaff.jpg',
       shortDesc: 'Socievole e atletico.',
       care: ['Allenamento quotidiano', 'Socializzazione']
     },
@@ -20,7 +20,7 @@ export class BreedsService {
       size: 'grande',
       energy: 3,
       hypoallergenic: false,
-      image: 'assets/breeds/labrador.jpg',
+      image: 'assest/golden.jpg',
       shortDesc: 'Amichevole, famigliare.',
       care: ['Attività moderata', 'Alimentazione bilanciata']
     },
@@ -30,7 +30,7 @@ export class BreedsService {
       size: 'piccola',
       energy: 3,
       hypoallergenic: true,
-      image: 'assets/breeds/poodle.jpg',
+      image: 'assest/barboncino.jpg',
       shortDesc: 'Intelligente e adatto in appartamento.',
       care: ['Toelettatura', 'Giochi mentali']
     }
